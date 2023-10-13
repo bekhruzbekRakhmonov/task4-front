@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { useAuth } from "./auth/AuthContext";
+import LoginComponent from "./components/auth/LoginComponent";
+import DashboardComponent from "./components/DashboardComponent";
+import RegisterComponent from "./components/auth/RegisterComponent";
+import {
+	BrowserRouter as Router,
+	Routes,
+	Route,
+	Navigate,
+} from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App: React.FC = () => {
+	const { isAuthenticated } = useAuth();
+
+	return (
+		<div>
+			<Router>
+				<Routes>
+					<Route path="/login" element={<LoginComponent />} />
+					<Route path="/register" element={<RegisterComponent />} />
+					<Route
+						path="/users"
+						element={
+							isAuthenticated ? (
+								<DashboardComponent />
+							) : (
+								<Navigate to="/login" />
+							)
+						}
+					/>
+					<Route path="/*" element={<Navigate to="/login" />} />
+				</Routes>
+			</Router>
+		</div>
+	);
+};
 
 export default App;
