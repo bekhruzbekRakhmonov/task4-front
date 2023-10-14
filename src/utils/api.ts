@@ -1,9 +1,8 @@
 import axios, { AxiosResponse } from "axios";
 import Cookies from "js-cookie";
 import jwtDecode from "jwt-decode";
-import { config } from "dotenv";
-config();
-const API_BASE_URL = process.env.API_BASE_URL;
+
+const API_BASE_URL = "http://5.180.182.241/task4/api";
 
 const api = axios.create({
 	baseURL: API_BASE_URL,

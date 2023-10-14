@@ -100,7 +100,7 @@ const DashboardComponent: React.FC = () => {
 	const handleDeleteConfirmation = async () => {
 		setDeleteDialogOpen(false);
 		try {
-			const response = await api.deleteUsers(selected);
+			await api.deleteUsers(selected);
 			if (selected.includes(user.id)) {
 				await logout();
 			}
@@ -112,7 +112,7 @@ const DashboardComponent: React.FC = () => {
 
 	const handleBlock = async () => {
 		try {
-			const response = await api.blockUsers(selected);
+			await api.blockUsers(selected);
 			if (selected.includes(user.id)) {
 				await logout();
 			}
@@ -124,7 +124,7 @@ const DashboardComponent: React.FC = () => {
 
 	const handleUnblock = async () => {
 		try {
-			const response = await api.unblockUsers(selected);
+			await api.unblockUsers(selected);
 			setChange(true);
 		} catch (error) {
 			console.error(error);

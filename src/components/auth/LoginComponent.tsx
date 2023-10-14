@@ -10,15 +10,15 @@ const LoginComponent = () => {
     email: "",
     password: "",
   });
-  const { login, error } = useAuth();
+  let { login, error } = useAuth();
   const navigate = useNavigate();
 
   const handleLogin = async () => {
 		try {
 			await login(credentials);
 			navigate('/users');
-		} catch (error) {
-			if (error instanceof AxiosError) {
+		} catch (err) {
+			if (err instanceof AxiosError) {
 				error = "Internal Server Error"
 			}
 		}
