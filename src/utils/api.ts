@@ -1,7 +1,8 @@
 import axios, { AxiosResponse } from "axios";
 import Cookies from "js-cookie";
 import jwtDecode from "jwt-decode";
-
+import { config } from "dotenv";
+config();
 const API_BASE_URL = process.env.API_BASE_URL;
 
 const api = axios.create({
