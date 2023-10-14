@@ -2,7 +2,7 @@ import axios, { AxiosResponse } from "axios";
 import Cookies from "js-cookie";
 import jwtDecode from "jwt-decode";
 
-const API_BASE_URL = "http://5.180.182.241/task4/api";
+const API_BASE_URL = "https://bekhruzbek/task4/api";
 
 const api = axios.create({
 	baseURL: API_BASE_URL,
