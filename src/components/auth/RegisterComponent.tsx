@@ -19,8 +19,14 @@ const RegisterComponent = () => {
 		try {
 			await register(userData);
 			navigate("/login");
-		} catch (error) {
-			setError("Registration failed. Please try again.");
+		} catch (error: any) {
+			if (error.response && error.response.status === 422) {
+				setError(
+					"Invalid data. Please check your input and try again."
+				);
+			} else {
+				setError("Registration failed. Please try again.");
+			}
 			setOpen(true);
 		}
 	};
